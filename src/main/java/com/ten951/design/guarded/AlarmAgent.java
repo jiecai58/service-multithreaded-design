@@ -38,7 +38,7 @@ public class AlarmAgent {
     }
 
     private void doSendAlarm(AlarmInfo alarm) {
-        logger.info("sending alarm " + alarm);
+        System.out.println("alarm = " + alarm);
         try {
             Thread.sleep(50);
         } catch (Exception ignored) {
@@ -60,7 +60,7 @@ public class AlarmAgent {
                 @Override
                 public Boolean call() throws Exception {
                     connectedToServer = true;
-                    logger.info("connected to server");
+                    System.out.println("connected to server: " + System.currentTimeMillis());
                     return Boolean.TRUE;
                 }
             });
@@ -83,6 +83,7 @@ public class AlarmAgent {
         public void run() {
             try {
                 Thread.sleep(100);
+                System.out.println("connect finish: " + System.currentTimeMillis());
             } catch (InterruptedException ignored) {
 
             }
@@ -100,12 +101,19 @@ public class AlarmAgent {
         }
 
         private boolean testConnection() {
-            return true;
+            return false;
         }
 
         private void reconnect() {
             ConnectingTask connectingTask = new ConnectingTask();
             connectingTask.run();
         }
+    }
+
+    public static void main(String[] args) throws Exception {
+        AlarmAgent alarmAgent = new AlarmAgent();
+        alarmAgent.init();
+        System.out.println(System.currentTimeMillis());
+        alarmAgent.sendAlarm(new AlarmInfo("湖人总冠军"));
     }
 }
