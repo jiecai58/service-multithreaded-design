@@ -11,7 +11,7 @@ public interface Blocker {
      * 在保护条件成立时执行目标动作;否则阻塞当期线程. 直到保护条件成立
      *
      * @param guardedAction 带保护条件的自动动作
-     * @param <V>
+     * @param <V> 泛型
      * @return
      * @throws Exception
      */
@@ -26,6 +26,9 @@ public interface Blocker {
      */
     void signalAfter(Callable<Boolean> stateOperation) throws Exception;
 
+    /**
+     * @throws InterruptedException
+     */
     void signal() throws InterruptedException;
 
     /**
