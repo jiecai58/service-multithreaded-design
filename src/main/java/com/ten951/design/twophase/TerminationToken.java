@@ -6,10 +6,13 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
+ * 终止凭证
+ *
  * @author 王永天
  * @date 2020-10-13 15:36
  */
 public class TerminationToken {
+
     protected volatile boolean toShutdown = false;
     public final AtomicInteger reservations = new AtomicInteger(0);
     private final Queue<WeakReference<Terminatable>> coordinatedThread;
