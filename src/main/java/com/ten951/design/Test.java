@@ -124,9 +124,9 @@ public class Test<T> {
             } finally {
                 latch.countDown();
             }
-            if (!Thread.currentThread().isInterrupted())  {
+            if (!Thread.currentThread().isInterrupted()) {
                 System.out.println("继续执行");
-            }else {
+            } else {
                 System.out.println("中断了 不执行");
             }
             map.put(TaskType.sub3, Boolean.TRUE);
